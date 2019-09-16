@@ -26,11 +26,11 @@ class App extends React.Component {
 
         {this.state.players.map( player => {
           return (
-            <>
+            <div key={player.id}>
               <h3>{player.name}</h3>
               <p>Country: {player.country}</p>
               <p>Searches: {player.searches}</p>
-            </>
+            </div>
           )
         })}
       </div>
