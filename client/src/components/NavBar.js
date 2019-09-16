@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
+import { useDarkMode } from "../hooks/useDarkMode.js"
 
-export const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
-    const item = window.localStorage.getItem(key);
-
-    return item ? JSON.parse(item) : initialValue;
-  });
-
-  const setValue = value => {
-    setStoredValue(value);
-    window.localStorage.setItem(key, JSON.stringify(value))
+const Navbar = () => {
+  const [darkMode, setDarkMode] = useDarkMode();
+  const toggleMode = e => {
+    e.preventDefault();
+    setDarkMode(!darkMode);
   };
-
-  return [storedValue, setValue]
+  return (
+    <nav className="navbar">
+      <h1>Women's World Cup Players</h1>
+      <div className="dark-mode__toggle">
+        <div
+          onClick={toggleMode}
+          className={darkMode ? 'toggle toggled' : 'toggle'}
+        />
+      </div>
+    </nav>
+  );
 };
+
+export default Navbar;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios'
+import Navbar from "./components/NavBar.js";
 
 class App extends React.Component {
   constructor() {
@@ -21,12 +22,11 @@ class App extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>Women's World Cup Players</h1>
-
+      <div className="App">
+        <Navbar />
         {this.state.players.map( player => {
           return (
-            <div key={player.id}>
+            <div className="players" key={player.id}>
               <h3>{player.name}</h3>
               <p>Country: {player.country}</p>
               <p>Searches: {player.searches}</p>
